@@ -1,6 +1,6 @@
 # College Repository
 
-Welcome to the **College Repository**! This repository contains all the code and resources related to my college courses. It is organized into three main sections: `class`, `assignment`, and `project`.
+Welcome to the **College Repository**! This repository contains all the code and resources related to my college courses. It is organized into three main sections: `class`, `assignment`, and `lab`.
 Welcome to the College C Programming Repository! This repository is a comprehensive collection of all my class codes, assignments, and lab work related to C programming during my college coursework. Whether you're a fellow student looking for reference materials or a developer interested in C programming practices, this repository offers a well-organized and detailed resource.
 ## Repository Structure
 
@@ -11,7 +11,7 @@ Welcome to the College C Programming Repository! This repository is a comprehens
 - **`assignment/`**  
   Here you'll find all the assignments given throughout the course. Each assignment is in its own folder, with a clear naming convention that includes the assignment number and topic.
   The Assignments directory includes all the coding assignments given throughout the course. Each assignment is placed in its respective folder, containing the problem statement, the C source code, and any additional documentation or comments explaining the approach and logic used.
-- **`project/`**  
+- **`lab/`**  
   This section includes lab codes, larger projects, and other practical work done as part of the course. Each project is well-documented with clear instructions on how to run and test the code.
   The Lab folder holds all the practical experiments and lab exercises conducted during the course. Each lab session's work is documented with clear explanations of the objectives, the code implementations, and the outcomes. This section is particularly useful for understanding how theoretical concepts are applied in practice.
 
