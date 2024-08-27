@@ -13,12 +13,9 @@ output is 13, which is a summation of it’s previous elements4,6and 3
 
 void findSummationElements(int arr[], int n) {
     for (int i = 1; i < n; i++) {
-        int sum = 0;
-        for (int j = i - 1; j >= 0; j--) {
-            sum += arr[j];
-            if (sum == arr[i]) {
-                printf("Output is %d, which is a summation of its previous elements", arr[i]);
-                printf(" at position %d.\n", i);
+        for (int sum = 0, j = i - 1; j >= 0; j--) {
+            if ((sum += arr[j]) == arr[i]) {
+                printf("Output is %d, a summation of previous elements at position %d.\n", arr[i], i);
                 break;
             }
         }
@@ -26,20 +23,16 @@ void findSummationElements(int arr[], int n) {
 }
 
 int main() {
-    int n;
-    printf("Enter the size of the array: ");
+    int n, *a;
+    printf("Enter size of the array: ");
     scanf("%d", &n);
 
-    int *a = malloc(n * sizeof(int));
-
+    a = malloc(n * sizeof(int));
     printf("Enter the elements of the array: ");
-    for (int i = 0; i < n; i++) {
-        scanf("%d", a + i);  // Corrected scanf to correctly take the pointer
-    }
+    for (int i = 0; i < n; i++) scanf("%d", &a[i]);
 
     findSummationElements(a, n);
 
-    free(a); // Free the allocated memory after use
-
+    free(a);
     return 0;
 }
