@@ -15,87 +15,72 @@ For this example, you have to create a pointer which will point to 3 element row
 #include <stdio.h>
 #include <stdlib.h>
 
-#define N 3  // Number of rows
-#define M 4  // Number of columns
-
-// Function to rearrange the array
-void rearrange(int arr[N][M], int n) {
-    int totalElements = N * M;
-    int flatArray[totalElements];
-    int freq[totalElements];
-    
-    // Initialize frequency array
-    for (int i = 0; i < totalElements; i++) {
-        freq[i] = 0;
-    }
-    
-    // Flatten the 2D array into a 1D array
+void rearrange(int **arr, int n, int m) {
+    int totalElements = n * m;
+    int *flatArray = (int *)malloc(totalElements * sizeof(int));
+    int *freq = (int *)calloc(101, sizeof(int)); // Assuming max value <= 100
     int k = 0;
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < M; j++) {
-            flatArray[k++] = arr[i][j];
+
+    // Flatten the array and compute frequencies
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < m; j++) {
+            flatArray[k] = arr[i][j];
+            freq[arr[i][j]]++;
+            k++;
         }
-    }
-    
-    // Calculate frequency of each element
-    for (int i = 0; i < totalElements; i++) {
-        freq[flatArray[i]]++;
-    }
-    
-    // Sort the flattened array using simple selection sort
-    for (int i = 0; i < totalElements - 1; i++) {
-        int minIndex = i;
-        for (int j = i + 1; j < totalElements; j++) {
-            if (flatArray[j] < flatArray[minIndex]) {
-                minIndex = j;
+
+    // Sort the flattened array
+    for (int i = 0; i < totalElements - 1; i++)
+        for (int j = i + 1; j < totalElements; j++)
+            if (flatArray[j] < flatArray[i]) {
+                int temp = flatArray[i];
+                flatArray[i] = flatArray[j];
+                flatArray[j] = temp;
             }
-        }
-        // Swap the found minimum element with the first element
-        int temp = flatArray[minIndex];
-        flatArray[minIndex] = flatArray[i];
-        flatArray[i] = temp;
-    }
-    
-    // Group the elements based on frequency
-    int newArr[N][M];
+
+    // Rearrange the 2D array
     int index = 0;
-    for (int i = 0; i < totalElements; ) {
+    for (int i = 0; i < totalElements; i += freq[flatArray[i]]) {
         int value = flatArray[i];
-        for (int j = 0; j < freq[value]; j++) {
-            newArr[index / M][index % M] = value;
-            index++;
-        }
-        i += freq[value]; // Skip over all occurrences of this value
+        for (int j = 0; j < freq[value]; j++)
+            arr[index / m][index++ % m] = value;
     }
-    
-    // Display the rearranged array
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < M; j++) {
-            printf("%d ", newArr[i][j]);
-        }
+
+    free(flatArray);
+    free(freq);
+
+    // Print the rearranged array
+    printf("Rearranged Array:\n");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++)
+            printf("%d ", arr[i][j]);
         printf("\n");
     }
 }
 
 int main() {
-    int arr[N][M] = {
-        {2, 3, 1, 4},
-        {3, 1, 2, 2},
-        {1, 3, 4, 4}
-    };
+    int n = 3, m = 4;
+    int **arr = (int **)malloc(n * sizeof(int *));
+    for (int i = 0; i < n; i++)
+        arr[i] = (int *)malloc(m * sizeof(int));
 
-    int n = 3;  // Number of repetitions in the original array
+    int values[3][4] = {{2, 3, 1, 4}, {3, 1, 2, 2}, {1, 3, 4, 4}};
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < m; j++)
+            arr[i][j] = values[i][j];
 
     printf("Original Array:\n");
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < M; j++) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++)
             printf("%d ", arr[i][j]);
-        }
         printf("\n");
     }
 
-    printf("\nRearranged Array:\n");
-    rearrange(arr, n);
+    rearrange(arr, n, m);
+
+    for (int i = 0; i < n; i++)
+        free(arr[i]);
+    free(arr);
 
     return 0;
 }
