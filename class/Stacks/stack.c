@@ -4,15 +4,15 @@
 typedef struct{
     int arr[100];
     int top;
-}STACK;
+}stack;
 
 // Function to initialize
-void init(STACK *a){
+void init(stack *a){
     a->top = -1;
 }
 
 // Function to push into a stack
-int push(STACK *a, int val){
+int push(stack *a, int val){
     if(a->top == 100){
         printf("Stack Overflow!\n");
         return 1;
@@ -23,7 +23,7 @@ int push(STACK *a, int val){
 }
 
 int main(){
-    STACK a;
+    stack a;
     init(&a);
     push(&a, 10);
 }
