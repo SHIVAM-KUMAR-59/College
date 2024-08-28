@@ -30,7 +30,7 @@ void create(struct node **head) {
 
 // Function to display the sparse matrix
 void display(struct node *head) {
-    struct node *ptr = head;
+    struct node *ptr = head; 
     while (ptr != NULL) {
         printf("%d %d %d\n", ptr->row, ptr->col, ptr->val);
         ptr = ptr->next;
@@ -55,6 +55,7 @@ void join(struct node *h1, struct node *h2, struct node **h) {
         printf("The two matrices are incompatible\n");
         return;
     } else {
+        // Fill the header node
         *h = malloc(sizeof(struct node));
         (*h)->row = h1->row;
         (*h)->col = h1->col;
@@ -89,6 +90,7 @@ void simplify(struct node **h) {
         struct node *prev = ptr;
         struct node *ptr1 = ptr->next;
         while (ptr1 != NULL) {
+            // If compatible then add the nodes and delete the extra node
             if (ptr->row == ptr1->row && ptr->col == ptr1->col) {
                 ptr->val += ptr1->val;
                 prev->next = ptr1->next;
@@ -96,11 +98,49 @@ void simplify(struct node **h) {
                 (*h)->val--;
                 ptr1 = prev->next;
             } else {
+                // Else continue in the loop
                 prev = ptr1;
                 ptr1 = ptr1->next;
             }
         }
         ptr = ptr->next;
+    }
+}
+
+// Function to multiply two sparse matrices
+void multiply(struct node *h1, struct node *h2, struct node **h) {
+    if (h1->col != h2->row) {
+        printf("Matrix multiplication cannot be performed\n");
+        exit(1);
+    } else {
+        // Fill the header node
+        struct node *tail;
+        tail = *h = malloc(sizeof(struct node));
+        (*h)->next = NULL;
+        (*h)->row = h1->row;
+        (*h)->col = h2->col;
+        (*h)->val = 0;
+
+        // Multiply each element if compatible
+        for (struct node *p1 = h1->next; p1 != NULL; p1 = p1->next) {
+            for (struct node *p2 = h2->next; p2 != NULL; p2 = p2->next) {
+                if (p1->col == p2->row) {
+                    struct node *curr = malloc(sizeof(struct node));
+                    curr->row = p1->row;
+                    curr->col = p2->col;
+                    curr->val = p1->val * p2->val;
+                    curr->next = NULL;
+
+                    struct node *temp = *h;
+                    while (temp->next != NULL) {
+                        temp = temp->next;
+                    }
+                    temp->next = curr;
+                    (*h)->val++;
+                }
+            }
+        }
+        simplify(h); // Simplify after all elements are inserted
     }
 }
 
@@ -128,6 +168,10 @@ int main() {
     printf("\nJoining and Adding the two matrices:\n");
     join(head1, head2, &result);
     simplify(&result);
+    display(result);
+
+    printf("\nMultiplication of the two matrices:\n");
+    multiply(head1, head2, &result);
     display(result);
 
     return 0;
