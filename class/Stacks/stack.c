@@ -19,7 +19,7 @@ int push(STACK *a, int val){
         exit(1);
     }
     a->arr[++a->top] = val;
-    a->top++;
+    return 0;
 }
 
 int main(){
