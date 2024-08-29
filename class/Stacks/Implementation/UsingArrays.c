@@ -1,32 +1,31 @@
 
 // Implementation of stack using Arrays
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-typedef struct{
+typedef struct {
     int arr[100];
     int top;
-}stack;
+} stack;
 
-// Function to initialize
-void init(stack *a){
+// Function to initialize the stack
+void init(stack *a) {
     a->top = -1;
 }
 
 // Function to push into a stack
-int push(stack *a, int val){
-    if(a->top == 100){
+int push(stack *a, int val) {
+    if (a->top == 99) {
         printf("Stack Overflow!\n");
         return 1;
-        exit(1);
     }
     a->arr[++a->top] = val;
     return 0;
 }
 
 // Function to pop from a stack
-int pop(stack *a, int *v){
-    if(a->top == -1){
+int pop(stack *a, int *v) {
+    if (a->top == -1) {
         printf("Stack Underflow!\n");
         return 1;
     }
@@ -34,13 +33,14 @@ int pop(stack *a, int *v){
     return 0;
 }
 
-int main(){
+int main() {
     stack a;
     init(&a);
     push(&a, 10);
 
     int b;
-    int c = pop(&a, &b);
-    printf("%d", b);
+    if (pop(&a, &b) == 0) {
+        printf("Popped value: %d\n", b);
+    }
     return 0;
 }
