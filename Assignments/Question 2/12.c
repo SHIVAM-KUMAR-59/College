@@ -1,3 +1,10 @@
+
+/*
+. Write a program that will create an ascending element array fromthe given unsorted array by fulfilling the following criteria. The values present in the resultant array may be different fromthe original array but the digits present in the each element of theoriginal array must be present in the same position of the
+resultant array. Your target should be to minimize the maximumvalue present inthe resultant array. Ex: Original array: 2,9,6,3,9,8,17,3,4,6,13,5
+Resultant array: 2, 9, 16, 23, 29, 38, 71, 73, 74, 76, 103, 105
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
