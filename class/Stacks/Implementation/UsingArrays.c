@@ -1,3 +1,5 @@
+
+// Implementation of stack using Arrays
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -22,8 +24,23 @@ int push(stack *a, int val){
     return 0;
 }
 
+// Function to pop from a stack
+int pop(stack *a, int *v){
+    if(a->top == -1){
+        printf("Stack Underflow!\n");
+        return 1;
+    }
+    *v = a->arr[a->top--];
+    return 0;
+}
+
 int main(){
     stack a;
     init(&a);
     push(&a, 10);
+
+    int b;
+    int c = pop(&a, &b);
+    printf("%d", b);
+    return 0;
 }
