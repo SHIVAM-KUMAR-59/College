@@ -57,9 +57,7 @@ void display(struct node *head) {
 
 int main(){
     struct node *head = NULL;
-    create(&head, 10);
-    display(head);
-    iterativeReverse(&head);
+    create(&head, 5);
     display(head);
     Reverse(&head);
     display(head);
