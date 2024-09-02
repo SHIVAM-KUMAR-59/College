@@ -57,7 +57,11 @@ void intersection(int *a, int n, int *b, int m) {
     }
 
     printf("Intersection: ");
+    if(k == 0){
+        printf("Null\n");
+    }else{
     display(c, k);
+    }
     free(c);
 }
 
