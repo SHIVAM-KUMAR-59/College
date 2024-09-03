@@ -8,7 +8,7 @@ Infix to Postfix
 #include<stdlib.h>
 
 typedef struct{
-    int arr[100];
+    char arr[100];
     int *top;
 }stack;
 
