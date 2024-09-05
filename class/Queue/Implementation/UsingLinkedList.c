@@ -37,26 +37,10 @@ int insert(queue* q, int val) {
     return 0;
 }
 
-// Function for deletion by moving the front pointer
-int delete_moveFront(queue* q, int* val) {
-    if (q->front == NULL) {  // Queue is empty
-        printf("Queue is empty\n");
-        return 1;
-    }
-    struct node* temp = q->front;
-    *val = temp->data;
-    q->front = q->front->next;
 
-    if (q->front == NULL) {  // Queue becomes empty after deletion
-        q->rear = NULL;
-    }
-
-    free(temp);
-    return 0;
-}
 
 // Function for deletion without moving the front pointer
-int delete_notMoveFront(queue* q, int* val) {
+int delete(queue* q, int* val) {
     if (q->front == NULL) {  // Queue is empty
         printf("Queue is empty\n");
         return 1;
@@ -88,12 +72,9 @@ int main() {
     insert(&q, 25);
     insert(&q, 35);
 
-    int a, b;
-    delete_moveFront(&q, &a);
-    delete_notMoveFront(&q, &b);
-
-    printf("Deletion by moving front: %d\n", a);
-    printf("Deletion without moving front: %d\n", b);
+    int a;
+    delete(&q, &a);
+    printf("Deletion without moving front: %d\n", a);
 
     return 0;
 }
