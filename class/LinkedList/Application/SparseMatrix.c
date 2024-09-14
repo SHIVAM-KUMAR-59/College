@@ -131,11 +131,8 @@ void multiply(struct node *h1, struct node *h2, struct node **h) {
                     curr->val = p1->val * p2->val;
                     curr->next = NULL;
 
-                    struct node *temp = *h;
-                    while (temp->next != NULL) {
-                        temp = temp->next;
-                    }
-                    temp->next = curr;
+                    tail->next = curr;
+                    tail = curr;
                     (*h)->val++;
                 }
             }
