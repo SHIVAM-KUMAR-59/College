@@ -96,7 +96,7 @@ void simplify(struct node **h) {
                 prev->next = ptr1->next;
                 free(ptr1);
                 (*h)->val--;
-                ptr1 = prev->next;
+                ptr1 = prev;
             } else {
                 // Else continue in the loop
                 prev = ptr1;
