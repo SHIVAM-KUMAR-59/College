@@ -88,7 +88,6 @@ int pop(int *val) {
 int main() {
     init(&q[0]);
     init(&q[1]);
-
     push(10);
     int res;
     if (pop(&res) == 0) {
