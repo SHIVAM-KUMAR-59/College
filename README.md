@@ -14,7 +14,7 @@ Welcome to the College C Programming Repository! This repository is a comprehens
 - **`Lab/`**  
   This section includes lab codes, larger projects, and other practical work done as part of the course. Each project is well-documented with clear instructions on how to run and test the code.
   The Lab folder holds all the practical experiments and lab exercises conducted during the course. Each lab session's work is documented with clear explanations of the objectives, the code implementations, and the outcomes. This section is particularly useful for understanding how theoretical concepts are applied in practice.
-- **`Personal Projects/`**
+- **`Personal Projects/`**<br>
   This folder contains all the personal projects I have worked on outside of class assignments and labs. Each project is a reflection of my learning journey, creativity, and problem-solving using C language. The folder includes individual project files, documentation, and execution details.
 
 ## How to Use This Repository
