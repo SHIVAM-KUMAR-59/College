@@ -4,16 +4,18 @@ Welcome to the **College Repository**! This repository contains all the code and
 Welcome to the College C Programming Repository! This repository is a comprehensive collection of all my class codes, assignments, and lab work related to C programming during my college coursework. Whether you're a fellow student looking for reference materials or a developer interested in C programming practices, this repository offers a well-organized and detailed resource.
 ## Repository Structure
 
-- **`class/`**  
+- **`Class/`**  
   This directory contains all the code written during class lectures. It includes examples, practice exercises, and any other material covered during the lessons.
   This folder contains all the C programs and exercises discussed and implemented during class lectures. Each file is named and documented to reflect the topic covered, ranging from basic syntax to advanced data structures and algorithms.
 
-- **`assignment/`**  
+- **`Assignments/`**  
   Here you'll find all the assignments given throughout the course. Each assignment is in its own folder, with a clear naming convention that includes the assignment number and topic.
   The Assignments directory includes all the coding assignments given throughout the course. Each assignment is placed in its respective folder, containing the problem statement, the C source code, and any additional documentation or comments explaining the approach and logic used.
-- **`lab/`**  
+- **`Lab/`**  
   This section includes lab codes, larger projects, and other practical work done as part of the course. Each project is well-documented with clear instructions on how to run and test the code.
   The Lab folder holds all the practical experiments and lab exercises conducted during the course. Each lab session's work is documented with clear explanations of the objectives, the code implementations, and the outcomes. This section is particularly useful for understanding how theoretical concepts are applied in practice.
+  **`Personal Projects/`**
+  This folder contains all the personal projects I have worked on outside of class assignments and labs. Each project is a reflection of my learning journey, creativity, and problem-solving using C language. The folder includes individual project files, documentation, and execution details.
 
 ## How to Use This Repository
 
