@@ -1,4 +1,4 @@
-# College Repository
+# College Repository 📚
 
 Welcome to the **College Repository**! This repository contains all the code and resources related to my college courses. It is organized into three main sections: `class`, `assignment`, and `lab`.
 Welcome to the College C Programming Repository! This repository is a comprehensive collection of all my class codes, assignments, and lab work related to C programming during my college coursework. Whether you're a fellow student looking for reference materials or a developer interested in C programming practices, this repository offers a well-organized and detailed resource.
@@ -30,8 +30,8 @@ Welcome to the College C Programming Repository! This repository is a comprehens
       gcc file_name.c
        ./a.exe
 
-## Contributions
+## Contributions ✨
 This repository is primarily a personal educational resource, but contributions are welcome! If you have suggestions, improvements, or additional material related to C programming, feel free to open an issue or submit a pull request.
 
-## Acknowledgments
+## Acknowledgments 👏
 I would like to thank my professors, classmates, and the online community for their invaluable support and resources that have greatly contributed to the completion of these codes.
