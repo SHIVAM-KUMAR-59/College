@@ -37,9 +37,10 @@ User* get_user(int id);
 void remove_user(int id);
 
 int main() {
+    
     int choice;
 
-    while (1) {
+    while (1) { 
         // Display the main menu
         printf("\nBank Management System\n");
         printf("1. Add User\n");
