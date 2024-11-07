@@ -4,6 +4,7 @@
 
 #include<stdio.h>
 
+// Function to search an element in an array
 int linear_search(int arr[], int n, int x) {
     for(int i = 0; i < n; i++) {
         if(arr[i] == x) {
