@@ -1,2 +1,51 @@
-a.out
-a.exe
+# Compiled object files
+*.o
+
+# Compiled dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled static libraries
+*.a
+*.lib
+
+# Executable files
+*.out
+*.exe
+
+# Debug files
+*.gch
+*.dSYM/
+*.stackdump
+
+# Generated files
+*.dep
+*.pch
+*.pdb
+*.ilk
+*.idb
+
+# IDE and editor files
+.vscode/
+*.code-workspace
+*.swp
+*.swo
+*.user
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+*.old
+*.save
+
+# Build directories
+/build/
+/bin/
+/debug/
+/release/
+
+# Other system files
+.DS_Store
+Thumbs.db
