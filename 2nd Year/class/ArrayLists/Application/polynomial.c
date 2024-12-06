@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Basic structure
 struct node {
     int coeff, exp;
 };
