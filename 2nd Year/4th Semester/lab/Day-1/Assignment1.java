@@ -4,7 +4,7 @@
 
  public class Assignment1{
     public static void main(String[] args) {
-        System.out.println("Name: Shivam Kumar");
+        System.out.println("Name: Shivam Kumar"); // Name
         System.out.println("Email: shivamkumardev01@gmail.com");
         System.out.println("Phone No: 70700XXXXX");
         System.out.println("Roll No: 2305XXXX");
