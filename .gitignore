@@ -1,3 +1,57 @@
+# Java compiled class files
+*.class
+
+# Log files
+*.log
+
+# Maven directories
+.mvn/
+target/
+
+# Gradle directories
+.gradle/
+build/
+
+# IntelliJ IDEA project files
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Eclipse IDE project files
+.project
+.classpath
+.settings/
+
+# NetBeans IDE project files
+nbproject/
+build/
+
+# Android Studio files
+*.apk
+*.ap_
+.cxx/
+.idea/
+local.properties
+output.json
+
+# Temporary files
+*.tmp
+*.bak
+*.old
+*.save
+
+# Test reports
+/test-output/
+*.xml
+
+# Lombok generated files
+lombok.config
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
 # Compiled object files
 *.o
 
