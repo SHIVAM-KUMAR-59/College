@@ -6,7 +6,6 @@ public class Assignment4 {
         System.out.println("Armstrong numbers from 2000 to 1:");
         
         for (int num = 2000; num >= 1; num--) {
-            int originalNumber = num;
             int sum = 0;
             int digits = 0;
 
