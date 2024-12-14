@@ -21,4 +21,6 @@ public class Q1{
 /*
  * $ javac Q1.java
  * $ java Q1 1 2 3
+ * Output: 
+ * 3
  */
