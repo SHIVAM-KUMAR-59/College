@@ -1,5 +1,5 @@
 /*
- * WAP to find the maximum of 3 numbers take input through command linke prompt
+ * WAP to find the maximum of 3 numbers take input through command line prompt
  */
 
 public class Q1{
