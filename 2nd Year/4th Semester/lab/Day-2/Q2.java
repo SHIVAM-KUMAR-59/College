@@ -25,5 +25,5 @@
  * $ javac Q2.java
  * $ java Q2 1 10
  * Output:
- *  2 3 5 7
+ * 1 2 3 5 7
  */
