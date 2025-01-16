@@ -26,7 +26,7 @@ Output: Display area of circle Display area of triangle Display area of square
      }
  }
  
- public class Main {
+class Demo {
      public static void main(String[] args) {
          Scanner scanner = new Scanner(System.in);
          AreaCalculator calculator = new AreaCalculator();
