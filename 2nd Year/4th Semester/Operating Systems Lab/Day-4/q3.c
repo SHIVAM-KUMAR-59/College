@@ -12,11 +12,13 @@ p2 -> p5 -> p7
 #include <sys/wait.h>
 
 int main(){
-        int t = fork();
     for(int i = 0; i < 2; i++){
+        int t = fork();
         if(t != 0){
             int a = fork();
-            printf("Child Process ID of P%d: %d and parent ID: %d\n", i + 1, getpid(), getppid());
+            printf("Process ID of P%d: %d and parent ID: %d\n", i + 1, getpid(), getppid());
+        }else{
+            break;
         }
     }
     return 0;
