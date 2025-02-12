@@ -15,6 +15,5 @@ int main(){
             exit(0);
         }
     }
-    printf("Parent process ID: %d\n",getpid());
     return 0;
 }
