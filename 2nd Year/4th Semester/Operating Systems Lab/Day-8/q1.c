@@ -16,7 +16,7 @@ void *f1(void *arg){
 
 int main(){
     pthread_t t1;
-    char name[] = "Ganesh";
+    char name[] = "Shivam";
     pthread_create(&t1, NULL, f1, name);
     pthread_join(t1, NULL);
     return 0;
