@@ -1,11 +1,10 @@
 #include <stdio.h>
 #include <pthread.h>
 
-#define N 8
-int arr[N] = {38, 27, 43, 3, 9, 82, 10, 1};
+int arr[] = {38, 27, 43, 3, 9, 82, 10, 1};
 
 void merge(int low, int mid, int high) {
-    int temp[N];
+    int temp[8];
     int i = low, j = mid + 1, k = low;
 
     while (i <= mid && j <= high) {
@@ -44,13 +43,13 @@ void* mergeSort(void* arg) {
 
 int main() {
     pthread_t t1;
-    int range[2] = {0, N - 1};
+    int range[2] = {0, 7};
 
     pthread_create(&t1, NULL, mergeSort, range);
     pthread_join(t1, NULL);
 
     printf("Sorted array: ");
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < 8; i++) {
         printf("%d ", arr[i]);
     }
     printf("\n");
