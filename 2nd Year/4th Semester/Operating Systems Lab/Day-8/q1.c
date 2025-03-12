@@ -4,8 +4,6 @@
 #include <pthread.h>
 #include <unistd.h>
 
-int c = 0;
-
 void *f1(void *arg){
     
     printf("Name is: %s\n", (char *)arg);
