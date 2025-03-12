@@ -43,11 +43,11 @@ void* mergeSort(void* arg) {
 }
 
 int main() {
-    pthread_t thread;
-    int params[2] = {0, N - 1};
+    pthread_t t1;
+    int range[2] = {0, N - 1};
 
-    pthread_create(&thread, NULL, mergeSort, params);
-    pthread_join(thread, NULL);
+    pthread_create(&t1, NULL, mergeSort, range);
+    pthread_join(t1, NULL);
 
     printf("Sorted array: ");
     for (int i = 0; i < N; i++) {
