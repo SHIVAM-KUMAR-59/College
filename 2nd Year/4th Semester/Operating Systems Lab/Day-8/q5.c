@@ -4,7 +4,7 @@
 #include <pthread.h>
 #include <unistd.h>
 
-int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
+int arr[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
 int sum = 0;
 
 void *fun(void *arg){
