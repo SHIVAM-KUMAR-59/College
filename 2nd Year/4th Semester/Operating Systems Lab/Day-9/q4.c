@@ -18,16 +18,15 @@ void *fun(void *arg) {
 
     if (a > 1) {
         pthread_t left, right;
-        int leftVal = a / 2;
-        int rightVal = a / 2;
+        int val = a / 2;
 
         struct node *leftAns;
-        pthread_create(&left, NULL, fun, &leftVal);
+        pthread_create(&left, NULL, fun, &val);
         pthread_join(left, (void **)&leftAns);
         node->left = leftAns;
 
         struct node *rightAns;
-        pthread_create(&right, NULL, fun, &rightVal);
+        pthread_create(&right, NULL, fun, &val);
         pthread_join(right, (void **)&rightAns);
         node->right = rightAns;
     }
