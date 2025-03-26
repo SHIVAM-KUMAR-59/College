@@ -11,23 +11,28 @@
 
 int i = 0;
 
-sem_t st;
+// sem_t *st;
+sem_t *st;
 
 void *fun(void *arg){
     int j;
     for(j = 0; j < 100000; j++){
         // Lock
-        sem_wait(&st);
+        // sem_wait(st);
+        sem_wait(st);
         i++;
         // Unlock
-        sem_post(&st);
+        // sem_post(st);
+        sem_post(st);
     }
     return NULL;
 }
 
 int main(){
     pthread_t t1, t2;
-    sem_init(&st, 0, 1);
+    //sem_init(&st, 0, 1);
+    st = sem_open("/ms",O_CREAT,0644,1);
+    // st=sem_open("aa",O_CREAT);
     pthread_create(&t1, NULL, fun, NULL);
     pthread_create(&t2, NULL, fun, NULL);
     pthread_join(t1, NULL);
