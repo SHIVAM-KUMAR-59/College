@@ -15,7 +15,7 @@ sem_t st;
 
 void *fun(void *arg){
     int j;
-    for(j = 0; j < 1000; j++){
+    for(j = 0; j < 100000; j++){
         // Lock
         sem_wait(&st);
         i++;
