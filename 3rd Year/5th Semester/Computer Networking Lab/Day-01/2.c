@@ -6,7 +6,7 @@ struct student_info {
     float CGPA;
     struct dob age;
 };
-pass to function using call by value and call by function and print value of each member of structure
+pass to function using call by value and call by referrence and print value of each member of structure
 */
 #include<stdio.h>
 
