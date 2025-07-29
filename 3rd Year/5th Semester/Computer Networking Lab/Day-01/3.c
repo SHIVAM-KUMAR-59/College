@@ -3,21 +3,21 @@
 #include <stdio.h>
 
 int main() {
-    unsigned int num;
+    int num;
     char byte1, byte2, byte3, byte4;
 
-    printf("Enter an unsigned integer: ");
+    printf("Enter an integer: ");
     scanf("%u", &num);
 
     byte1 = (num & 0x000000FF);
-    byte2 = (num & 0x0000FF00) >> 8;
-    byte3 = (num & 0x00FF0000) >> 16;
-    byte4 = (num & 0xFF000000) >> 24;
+    byte2 = (num >> 8) & 0x000000FF;
+    byte3 = (num >> 16) & 0x000000FF;
+    byte4 = (num >> 24) & 0xFF;
 
-    printf("Byte 1: 0x%02X\n", (unsigned char)byte1);
-    printf("Byte 2: 0x%02X\n", (unsigned char)byte2);
-    printf("Byte 3: 0x%02X\n", (unsigned char)byte3);
-    printf("Byte 4: 0x%02X\n", (unsigned char)byte4);
+    printf("Byte 1: %d\n", byte1);
+    printf("Byte 2: %d\n", byte2);
+    printf("Byte 3: %d\n", byte3);
+    printf("Byte 4: %d\n", byte4);
 
     return 0;
 }
