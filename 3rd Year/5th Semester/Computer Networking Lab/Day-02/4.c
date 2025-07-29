@@ -1,3 +1,11 @@
+/*
+WAP to enter a number and store the number accorss a following structure and trim the content of each member of structure. Then aggreggate each member of struct to form the original number and print the same
+struct pkt {
+    char ch1;
+    char ch2[2];
+    char ch3;
+}
+*/
 #include <stdio.h>
 struct pkt {
     char ch1;
