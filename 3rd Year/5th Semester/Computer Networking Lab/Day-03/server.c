@@ -51,13 +51,18 @@ UDP:
 */
 
 #include<stdio.h>
+#include<stdlib.h>
 #include<sys/types.h>
 #include<sys/socket.h>
 #include<netinet/in.h> // man 7 ip
 #include<netinet/ip.h>
 #include<arpa/inet.h>
 
-int main(){
+int main(int count, char *args[]){
+	if(count < 3) {
+		printf("Not enough arguments\n");
+		return 0;
+	}
 	int socketfd = socket(AF_INET, SOCK_DGRAM, 0);
 	if(socketfd == -1) {
 		printf("Socket connection failed\n");
@@ -68,8 +73,8 @@ int main(){
 	struct sockaddr_in myaddr; // address declaration
 	// populating the structure
 	myaddr.sin_family = AF_INET;
-	myaddr.sin_port = htons(5017); // htons = host to network address
-	myaddr.sin_addr.s_addr = inet_addr("127.0.0.1");
+	myaddr.sin_port = htons(atoi(args[2])); // htons = host to network address
+	myaddr.sin_addr.s_addr = inet_addr(args[1]);
 	
 	int bindConn = bind(socketfd, (const struct sockaddr *) (&myaddr), sizeof(myaddr));
 	if(bindConn == -1){
