@@ -41,6 +41,12 @@ UDP:
 		- struct in_addr {
 			uint32_t s_addr; // adress in network byte order
 		}
+	
+	- recvfrom(): Recieve a message from a socket
+		- ssize_t recvfrom(int sockfd, void *buff, size_t len, int flags, struct sockaddr *_Nullable restrict src_addr, socklen_t *_Nullable restrict addrlen);
+	 
+	- sendto(): Send a message on a scoket
+	 	- ssize_t sendto(int sockfd, const void buff[.len], size_t len, int flags, const struct sockaddr *dest_addr, socklen_t addrlen);
 		 
 */
 
@@ -67,7 +73,7 @@ int main(){
 	
 	int bindConn = bind(socketfd, (const struct sockaddr *) (&myaddr), sizeof(myaddr));
 	if(bindConn == -1){
-		printf("Socket binding unsuccessfull\n");
+		printf("Socketinding unsuccessfull\n");
 	}else {
 		printf("Socket binding successfull\n");
 	}
