@@ -1,3 +1,5 @@
+// WAP to sort an array of 10 elements in ascending order using insertion sort
+
 #include <stdio.h>
 
 void printArray(int arr[], int n) {
