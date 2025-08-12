@@ -46,7 +46,7 @@ UDP:
 		- ssize_t recvfrom(int sockfd, void *buff, size_t len, int flags, struct sockaddr *_Nullable restrict src_addr, socklen_t *_Nullable restrict addrlen);
 	 
 	- sendto(): Send a message on a scoket
-	 	- ssize_t sendto(int sockfd, const void buff[.len], size_t len, int flags, const struct sockaddr *dest_addr, socklen_t addrlen);
+	 	- ssize_t sendto(int sockfd, const void *buff, size_t len, int flags, const struct sockaddr *dest_addr, socklen_t addrlen);
 		 
 */
 
@@ -57,12 +57,13 @@ UDP:
 #include<netinet/in.h> // man 7 ip
 #include<netinet/ip.h>
 #include<arpa/inet.h>
+#include<string.h>
 
-int main(int count, char *args[]){
-	if(count < 3) {
-		printf("Not enough arguments\n");
-		return 0;
-	}
+int main(){
+	//if(count < 3) {
+	//	printf("Not enough arguments\n");
+	//	return 0;
+	//}
 	int socketfd = socket(AF_INET, SOCK_DGRAM, 0);
 	if(socketfd == -1) {
 		printf("Socket connection failed\n");
@@ -73,15 +74,35 @@ int main(int count, char *args[]){
 	struct sockaddr_in client_addr; // address declaration
 	// populating the structure
 	client_addr.sin_family = AF_INET;
-	client_addr.sin_port = htons(atoi(args[2])); // htons = host to network address
-	client_addr.sin_addr.s_addr = inet_addr(args[1]);
+	client_addr.sin_port = htons(6017); // htons = host to network address
+	client_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
 	
 	int bindConn = bind(socketfd, (const struct sockaddr *) (&client_addr), sizeof(client_addr));
 	if(bindConn == -1){
-		printf("Socketinding unsuccessfull\n");
+		printf("Socket binding unsuccessfull\n");
 	}else {
 		printf("Socket binding successfull\n");
 	}
+	
+	char charBuffer[100];
+	printf("Enter a message\n");
+	scanf("%s", charBuffer);
+	int flags = 0;
+	
+	struct sockaddr_in server_addr; // address declaration
+	// populating the structure
+	server_addr.sin_family = AF_INET;
+	server_addr.sin_port = htons(5017); // htons = host to network address
+	server_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
+	
+	int send = sendto(socketfd, charBuffer, strlen(charBuffer), flags, (const struct sockaddr*) (&server_addr), sizeof(server_addr));
+	
+	if(send == -1) {
+		printf("Error sending the message\n");
+		return 1;
+	}
+	
+	printf("Message sent successfully\n");
 	
 	return 0;
 }
