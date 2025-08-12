@@ -86,7 +86,7 @@ int main(){
 	
 	char charBuffer[100];
 	printf("Enter a message\n");
-	scanf("%s", charBuffer);
+	scanf("%[^\n]s", charBuffer);
 	int flags = 0;
 	
 	struct sockaddr_in server_addr; // address declaration
@@ -103,6 +103,17 @@ int main(){
 	}
 	
 	printf("Message sent successfully\n");
+	
+	int temp = sizeof(server_addr);
+	char recieveBuffer[100];
+	int recieve = recvfrom(socketfd, recieveBuffer, sizeof(recieveBuffer), flags, (struct sockaddr *)(&server_addr), &temp);
+	
+	if(recieve == -1){
+		printf("Message recieve failed\n");
+		return 1;
+	}
+	
+	printf("Message recieved successfully: %s\n", recieveBuffer);
 	
 	return 0;
 }

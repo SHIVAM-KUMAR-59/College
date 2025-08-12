@@ -98,6 +98,13 @@ int main(){
 	
 	printf("Message recieved successfully: %s\n", charBuffer);
 	
+	int send = sendto(socketfd, charBuffer, strlen(charBuffer), flags, (const struct sockaddr*) (&client_addr), sizeof(client_addr));
+	if(send == -1){
+		printf("Send failed\n");
+	}
+	
+	printf("Message sent successfully\n");
+	
 	return 0;
 }
 
