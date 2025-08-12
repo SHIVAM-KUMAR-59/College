@@ -96,9 +96,13 @@ int main(){
 		return 1;
 	}
 	
-	printf("Message recieved successfully: %s\n", charBuffer);
+	printf("Name recieved successfully: %s\n", charBuffer);
+
+	char sendBuffer[100];
+	printf("Enter a message to send: ");
+	scanf("%[^\n]s", sendBuffer);
 	
-	int send = sendto(socketfd, charBuffer, strlen(charBuffer), flags, (const struct sockaddr*) (&client_addr), sizeof(client_addr));
+	int send = sendto(socketfd, sendBuffer, strlen(sendBuffer), flags, (const struct sockaddr*) (&client_addr), sizeof(client_addr));
 	if(send == -1){
 		printf("Send failed\n");
 	}
