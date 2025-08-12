@@ -84,7 +84,7 @@ int main(){
 		printf("Socket binding successfull\n");
 	}
 	
-	struct sockaddr_in client_addr; // clientaddress declaration
+	struct sockaddr_in client_addr; // client address declaration
 	
 	char charBuffer[100];
 	int flags = 0;
