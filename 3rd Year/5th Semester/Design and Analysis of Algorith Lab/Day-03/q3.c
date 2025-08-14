@@ -1,4 +1,4 @@
-// WAP to sort an array of 10 elements in ascending order using insertion sort
+// WAP to sort an array of 10 elements in ascending order using quick sort
 
 #include <stdio.h>
 
