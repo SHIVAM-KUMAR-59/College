@@ -7,9 +7,10 @@
 #include <string.h>
 #include <unistd.h>
 
-struct send {
-    int a, b;
-    char op;
+struct Student {
+    char name[50];
+    int roll;
+    int marks;
 };
 
 int main() {
@@ -20,12 +21,10 @@ int main() {
         printf("Socket creation failed");
         exit(1);
     }
-    printf("Socket created successfully.\n");
 
-    // Client address
     struct sockaddr_in client;
     client.sin_family = AF_INET;
-    client.sin_port = htons(6017);  
+    client.sin_port = htons(6017);
     client.sin_addr.s_addr = inet_addr("127.0.0.1");
 
     if (bind(sockfd, (const struct sockaddr*) &client, sizeof(client)) == -1) {
@@ -33,45 +32,44 @@ int main() {
         close(sockfd);
         exit(1);
     }
-    printf("Bind successful.\n");
 
-    
     struct sockaddr_in server;
     server.sin_family = AF_INET;
-    server.sin_port = htons(5017);  
+    server.sin_port = htons(5017);
     server.sin_addr.s_addr = inet_addr("127.0.0.1");
 
-    struct send msg;
-    printf("Enter first number: ");
-    scanf("%d", &msg.a);
-    printf("Enter operator (+, -, *, /): ");
-    scanf(" %c", &msg.op); 
-    printf("Enter second number: ");
-    scanf("%d", &msg.b);
+    struct Student students[5];
+    printf("Enter info of 5 students:\n");
+    for (int i = 0; i < 5; i++) {
+        printf("\nStudent %d\n", i + 1);
+        printf("Name: ");
+        scanf("%s", students[i].name);
+        printf("Roll: ");
+        scanf("%d", &students[i].roll);
+        printf("Marks: ");
+        scanf("%d", &students[i].marks);
+    }
 
     socklen_t len = sizeof(server);
 
-   
-    int sendres = sendto(sockfd, &msg, sizeof(msg), 0,
-                         (const struct sockaddr*) &server, len);
+    int sendres = sendto(sockfd, students, sizeof(students), 0,(const struct sockaddr*) &server, len);
     if (sendres == -1) {
         printf("Send failed");
         close(sockfd);
         exit(1);
     }
-    printf("Sent: %d %c %d\n", msg.a, msg.op, msg.b);
+    printf("Sent all 5 students info to server.\n");
 
-
-    int ans;
-    int rec = recvfrom(sockfd, &ans, sizeof(ans), 0,
-                       (struct sockaddr*) &server, &len);
+    struct Student top;
+    int rec = recvfrom(sockfd, &top, sizeof(top), 0, (struct sockaddr*) &server, &len);
     if (rec == -1) {
         printf("Receive failed");
         close(sockfd);
         exit(1);
     }
 
-    printf("Result received from server: %d\n", ans);
+    printf("\nHighest Scorer received from server:\n");
+    printf("Name: %s\nRoll: %d\nMarks: %d\n", top.name, top.roll, top.marks);
 
     close(sockfd);
     return 0;

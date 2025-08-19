@@ -33,7 +33,7 @@ int main() {
 
     int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
     if (sockfd == -1) {
-        perror("Socket creation failed");
+        printf("Socket creation failed");
         exit(1);
     }
     printf("Socket created successfully.\n");
@@ -44,7 +44,7 @@ int main() {
     server.sin_addr.s_addr = inet_addr("127.0.0.1");
 
     if (bind(sockfd, (const struct sockaddr*) &server, sizeof(server)) == -1) {
-        perror("Bind failed");
+        printf("Bind failed");
         close(sockfd);
         exit(1);
     }
@@ -56,7 +56,7 @@ int main() {
     int recieve = recvfrom(sockfd, &recStruct, sizeof(recStruct), 0,
                            (struct sockaddr*) &client, &len);
     if (recieve == -1) {
-        perror("Receive failed");
+        printf("Receive failed");
         close(sockfd);
         exit(1);
     }
@@ -67,7 +67,7 @@ int main() {
 
     int sendres = sendto(sockfd, &ans, sizeof(ans), 0, (const struct sockaddr*) &client, len);
     if (sendres == -1) {
-        perror("Send failed");
+        printf("Send failed");
         close(sockfd);
         exit(1);
     }
