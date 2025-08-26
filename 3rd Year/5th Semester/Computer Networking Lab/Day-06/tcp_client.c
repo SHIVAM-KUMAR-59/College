@@ -1,4 +1,6 @@
 #include <stdlib.h>
+// Code for TCP client
+
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -6,6 +8,7 @@
 #include <netinet/in.h>
 #include <string.h>
 #include <unistd.h>
+#include <arpa/inet.h>
 
 int main() {
 	int sockfd = socket(AF_INET, SOCK_STREAM, 0);

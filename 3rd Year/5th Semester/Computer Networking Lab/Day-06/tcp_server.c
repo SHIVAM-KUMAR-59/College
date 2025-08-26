@@ -1,3 +1,5 @@
+// Code for TCP server
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <sys/types.h>
@@ -6,6 +8,7 @@
 #include <netinet/in.h>
 #include <string.h>
 #include <unistd.h>
+#include <arpa/inet.h>
 
 int main() {
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
