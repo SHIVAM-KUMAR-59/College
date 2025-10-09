@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Node structure for Huffman tree
 struct MinHeapNode {
     char data;          
     int freq;            
@@ -17,7 +16,7 @@ struct MinHeap {
     struct MinHeapNode** array;
 };
 
-struct MinHeapNode* newNode(char data, unsigned freq) {
+struct MinHeapNode* newNode(char data, int freq) {
     struct MinHeapNode* temp = (struct MinHeapNode*) malloc(sizeof(struct MinHeapNode));
     temp->left = temp->right = NULL;
     temp->data = data;
@@ -25,7 +24,7 @@ struct MinHeapNode* newNode(char data, unsigned freq) {
     return temp;
 }
 
-struct MinHeap* createMinHeap(unsigned capacity) {
+struct MinHeap* createMinHeap(int capacity) {
     struct MinHeap* minHeap = (struct MinHeap*) malloc(sizeof(struct MinHeap));
     minHeap->size = 0;
     minHeap->capacity = capacity;
@@ -129,7 +128,6 @@ void HuffmanCodes(char data[], int freq[], int size) {
     printCodes(root, arr, top);
 }
 
-// Driver Code
 int main() {
     char arr[] = { 'a', 'b', 'c', 'd', 'e', 'f' };
     int freq[] = { 5, 9, 12, 13, 16, 45 };
