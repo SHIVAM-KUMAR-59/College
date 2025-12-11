@@ -39,7 +39,6 @@ def best_first_search(grid, start, goal):
 
         x, y = current
 
-        # 4 directional movement
         neighbours = [(x+1,y), (x-1,y), (x,y+1), (x,y-1)]
 
         for nx, ny in neighbours:
@@ -53,7 +52,7 @@ def best_first_search(grid, start, goal):
 
 grid = [
     [0, 0, 0, 0, 0],
-    [0, 1, 1, 1, 0],  # 1 → obstacle
+    [0, 1, 1, 1, 0],
     [0, 0, 0, 1, 0],
     [0, 1, 0, 0, 0],
     [0, 0, 0, 0, 0]

@@ -14,14 +14,12 @@ def uniform_cost_search(graph, start, goal):
     pq = []
     heapq.heappush(pq, (0, start))
 
-    # Track cost and parent for path reconstruction
     cost_so_far = {start: 0}
     parent = {start: None}
 
     while pq:
         current_cost, current_node = heapq.heappop(pq)
 
-        # Goal found
         if current_node == goal:
             path = []
             while current_node:
@@ -29,7 +27,6 @@ def uniform_cost_search(graph, start, goal):
                 current_node = parent[current_node]
             return path[::-1], current_cost
 
-        # Explore neighbors
         for neighbor, edge_cost in graph[current_node]:
             new_cost = current_cost + edge_cost
 
