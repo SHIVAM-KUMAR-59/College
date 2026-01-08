@@ -9,6 +9,8 @@
 #  Compare the performance of the two heuristics in terms of the number of nodes
 # explored and solution depth.
 
+import heapq
+
 # Goal state
 GOAL = (
     (1, 2, 3),
@@ -23,30 +25,6 @@ START = (
     (7, 5, 8)
 )
 
-# Heuristic 1
-# Number of misplaced tiles
-def h1_misplaced(state):
-    count = 0
-    for i in range(3):
-        for j in range(3):
-            if state[i][j] != 0 and state[i][j] != GOAL[i][j]:
-                count += 1
-    return count
-
-# Heuristic 2
-# Manhattan distance
-def h2_manhattan(state):
-    distance = 0
-    for i in range(3):
-        for j in range(3):
-            value = state[i][j]
-            if value != 0:
-                goal_x = (value - 1) // 3
-                goal_y = (value - 1) % 3
-                distance += abs(i - goal_x) + abs(j - goal_y)
-    return distance
-
-# Helper Functions
 def find_blank(state):
     for i in range(3):
         for j in range(3):
@@ -56,7 +34,6 @@ def find_blank(state):
 def get_neighbors(state):
     neighbors = []
     x, y = find_blank(state)
-
     moves = [(-1,0), (1,0), (0,-1), (0,1)]
 
     for dx, dy in moves:
@@ -68,41 +45,31 @@ def get_neighbors(state):
 
     return neighbors
 
-# A* Algo
-def astar(start, heuristic):
-    open_list = [(heuristic(start), 0, start)]
+def uniform_cost_search(start):
+    pq = []                      # priority queue (cost, state)
+    heapq.heappush(pq, (0, start))
     visited = set()
     nodes_explored = 0
 
-    while open_list:
-        open_list.sort()          # Sort by f = g + h
-        f, g, current = open_list.pop(0)
+    while pq:
+        cost, current = heapq.heappop(pq)
         nodes_explored += 1
 
         if current == GOAL:
-            return nodes_explored, g
+            return nodes_explored, cost
+
+        if current in visited:
+            continue
 
         visited.add(current)
 
         for neighbor in get_neighbors(current):
             if neighbor not in visited:
-                h = heuristic(neighbor)
-                open_list.append((g + 1 + h, g + 1, neighbor))
+                heapq.heappush(pq, (cost + 1, neighbor))
 
     return None
 
-print("Using Heuristic H1 (Misplaced Tiles)")
-nodes1, depth1 = astar(START, h1_misplaced)
-print("Nodes explored:", nodes1)
-print("Solution depth:", depth1)
-
-print("\nUsing Heuristic H2 (Manhattan Distance)")
-nodes2, depth2 = astar(START, h2_manhattan)
-print("Nodes explored:", nodes2)
-print("Solution depth:", depth2)
-
-print("\nComparison:")
-if nodes2 < nodes1:
-    print("Manhattan Distance heuristic is more efficient.")
-else:
-    print("Both heuristics perform similarly.")
+print("Using Uniform Cost Search")
+nodes, depth = uniform_cost_search(START)
+print("Nodes explored:", nodes)
+print("Solution depth:", depth)
