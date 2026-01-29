@@ -1,3 +1,5 @@
+# Simulated annealing (SA)
+
 import math
 import random
 
